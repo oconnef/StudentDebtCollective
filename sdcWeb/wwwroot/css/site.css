@@ -1,0 +1,223 @@
+
+/* Set global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+/* Navigation styles */
+nav {
+    background-color: #009999;
+    color: #FFFFFF;
+    padding: 20px;
+}
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+    }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+            nav ul li a {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+
+/* Hero section styles */
+.hero {
+    background-image: url('../images/hero-image.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+    .hero-content h1 {
+        font-size: 36px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+        font-weight: bolder;
+    }
+
+#newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    #newsletter-form .form-control {
+        padding: 10px;
+        border-radius: 4px;
+        margin-right: 10px;
+        width: 250px; /* Adjust the width as needed */
+    }
+
+    #newsletter-form button {
+        padding: 10px 20px;
+        background-color: #009999;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+/* Other section styles */
+/* Add styles for other sections on the homepage */
+
+.page-footer {
+    border-top: 1px solid #eee;
+}
+
+    .page-footer .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .page-footer a {
+        color: #009999;
+    }
+
+    .page-footer ul {
+        list-style-type: none;
+    }
+
+.fs-3 {
+    color: #009999;
+}
+
+/* Override Bootstrap colors */
+.navbar {
+    background-color: #009999 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFFFFF !important;
+}
+
+.btn-primary {
+    background-color: #009999 !important;
+    border-color: #009999 !important;
+}
+
+    .btn-primary:hover {
+        background-color: #007777 !important;
+        border-color: #007777 !important;
+    }
+
+header {
+    margin-bottom: 10px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    text-align: center;
+}
+
+.section-subheading {
+    text-align: center;
+}
+
+#about p {
+    margin: 25px;
+}
+
+.button {
+    display: block;
+    background: #009999;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin: auto;
+    width: 65%;
+}
+
+    .button:hover {
+        background-color: #007777 !important;
+        border-color: #007777 !important;
+        text-decoration: none;
+        color: white;
+    }
+
+/* Article Styles */
+article {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+    article header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+        article header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        article header p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+    article section {
+        padding: 20px;
+    }
+
+    article h2 {
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    article p {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    article ul {
+        list-style: disc;
+        margin-left: 20px;
+    }
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    article {
+        margin: 10px;
+        padding: 10px;
+    }
+
+        article header h1 {
+            font-size: 24px;
+        }
+
+        article header p {
+            font-size: 14px;
+        }
+
+        article h2 {
+            font-size: 20px;
+        }
+
+        article p {
+            font-size: 16px;
+        }
+}

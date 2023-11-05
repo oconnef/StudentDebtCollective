@@ -1,0 +1,208 @@
+﻿@model SubscriptionModel
+@{
+    ViewData["Title"] = "Subscription";
+}
+
+@*<div class="row" style="margin:auto auto;width:80%;text-align:center;"><h1>Take Control of Your Student Loan Debt Today! <br />Subscribe to our Newsletter.</h1></div>*@
+
+<div class="row" style="margin:auto auto;width:80%;text-align:center;">
+    <h2 style="margin:auto auto;">We have a pretty special deal going on right now!</h2>
+    <h3>
+        To start this movement, we'll be doing weekly drawings until October 1st, 2023. And the subscription fee will be just $1! 
+        I'll foot the other $4. Each week, we'll draw a name 
+        and that recipient will get all the funds from that week's subscriptions.
+    </h3>
+</div>
+
+<div class="row" style="margin: auto auto; width: 50%;">
+
+    <form method="POST" asp-controller="Home" asp-action="Subscription">
+        <p>Enter a few bits of information so we can contact you when your name is drawn...</p>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="FirstName">First Name:</label>
+                <input type="text" id="FirstName" name="FirstName" class="form-control" value="@Model.FirstName" asp-for="FirstName">
+                <div id="errFName" style="color: red;"></div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="LastName">Last Name:</label>
+                <input type="text" id="LastName" name="LastName" class="form-control" value="@Model.LastName" asp-for="LastName">
+                <div id="errLName" style="color: red;"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmailAddress">Email Address</label>
+            <input type="email" class="form-control" id="SubEmailAddress" aria-describedby="emailHelp" placeholder="Enter Email" value="@Model.EmailAddress" asp-for="EmailAddress">
+            <div id="errEmail" style="color: red;"></div>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="Phone">Phone Number</label>
+            <input type="tel" class="form-control phone" id="Phone" name="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" asp-for="Phone">
+            <div id="errPhone" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <label for="Birthday">Birthday</label>
+            <input type="date" id="Birthday" name="Birthday" class="form-control" asp-for="Birthday">
+            <div id="errBirthday" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <label for="AmountOwed">Total Amount Owed</label>
+            <input type="text" id="AmountOwed" name="AmountOwed" class="form-control" asp-for="AmountOwed">
+            <div id="errAmountOwed" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <label for="Lenders">Lenders</label>
+            <input type="text" id="Lenders" name="Lenders" class="form-control" asp-for="Lenders">
+            <div id="errLenders" style="color: red;"></div>
+        </div>
+        <div>
+            <h5>By clicking Subscribe, you will be taken to our payment gateway run by <a target="_blank" href="https://www.chargebee.com">ChargeBee</a>. If you wish to cancel at any time, just login to the link in your subscription confirmation email or reach out to us so we can help!</h5>
+            <a class="btn btn-primary btn-block" id="checkoutLink" href="javascript:subscribe();" data-cb-type="checkout" data-cb-item-0="SDCMonthly-USD-Monthly" data-cb-item-0-quantity="1">Subscribe</a>
+        </div>
+    </form>
+
+</div>
+
+@*<script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="studentdebtcollective-test"></script>*@
+<script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="studentdebtcollective"> </script>
+<script>
+    $(document).ready(function () {
+
+        function numbersOnly(evt) {
+
+            if (evt.type != undefined && (evt.type == 'keydown' || evt.type == 'paste') &&
+                (evt.originalEvent.key == "ArrowLeft" || evt.originalEvent.key == "ArrowRight" //arrow movement
+                    || (evt.originalEvent.key == "a" && evt.originalEvent.ctrlKey == true)
+                    || (evt.originalEvent.key == "v" && evt.originalEvent.ctrlKey == true)
+                    || (evt.originalEvent.key == "c" && evt.originalEvent.ctrlKey == true)
+                    || evt.originalEvent.key == "Control"
+                    || evt.originalEvent.type == 'paste')) {
+                if (evt.originalEvent.type == 'paste') {
+                    setTimeout(function () {
+                        // Get the pasted value from the input field
+                        const pastedValue = $(evt.target).val();
+
+                        // Remove non-numeric characters using regular expression
+                        const formattedValue = pastedValue.replace(/\D/g, '');
+
+                        // Set the formatted value to the input field
+                        $(evt.target).val(formattedValue);
+                    }, 0);
+                }
+                return true;
+            }
+
+            const charCode = evt.which ?? evt.keyCode;
+            return ((charCode != 32 && charCode < 48) || Number.isInteger(parseInt(evt.key)));
+        }
+
+        $('#AmountOwed').on('keydown', numbersOnly);
+        $('#AmountOwed').on('paste', numbersOnly);
+
+        function formatPhone(evt) {
+            let value = $(evt.target).val();
+            if (value === undefined) { return; }
+            const $input = $(evt.target);
+            const length = value.length;
+            const charCode = evt.which ?? evt.keyCode;
+            const caretPos = $(evt.target).prop('selectionStart');
+            const originalCaretPos = caretPos;
+
+            if (!((8 == charCode || 46 == charCode) && (3 == caretPos || 7 == caretPos) && length == caretPos)) {
+                if (!value.match(/(\d{3})(-)(\d{3})(-)(\d{0,4})/)) {
+                    let formattedValue = value.replace(/(\D{1,})/g, "");
+                    const cursorOffset = formattedValue.substring(0, caretPos).replace(/[^-]/g, '').length;
+                    const lenBefore = formattedValue.length;
+
+                    formattedValue = `${formattedValue.substring(0, 3)}${formattedValue.length > 3 ? "-" : ""}${formattedValue.substring(3, 6)}${formattedValue.length > 6 ? "-" : ""}${formattedValue.substring(6, 10)}`;
+
+                    const lenAfter = formattedValue.length;
+                    let lenOffset = lenAfter - lenBefore;
+
+                    if (evt.type != undefined && evt.type == 'keyup' && (evt.originalEvent.key == 'Delete' || evt.originalEvent.key == 'Home' || evt.originalEvent.key == 'ArrowUp' || evt.originalEvent.key == 'Backspace')) {
+                        lenOffset = 0; // Don't change position
+                    }
+
+                    $input.val(formattedValue);
+
+                    const newCaretPos = originalCaretPos + cursorOffset + lenOffset;
+                    $input.prop('selectionStart', newCaretPos);
+                    $input.prop('selectionEnd', newCaretPos);
+                }
+            }
+        }
+
+        $('.phone').each(formatPhone);
+        $('.phone').keyup(formatPhone);
+
+        const validate = function () {
+            var isValid = true;
+
+            $('#errFName').text('');
+            $('#errLName').text('');
+            $('#errEmail').text('');
+            $('#errPhone').text('');
+            $('#errLenders').text('');
+            $('#AmountOwed').text('');
+
+            //validate data
+            if ($("#FirstName").val().trim() === '') {
+                isValid = false;
+                $('#errFName').text('Please enter a valid first name.');
+            }
+            if ($("#LastName").val().trim() === '') {
+                isValid = false;
+                $('#errLName').text('Please enter a valid last name.');
+            }
+            if ($("#SubEmailAddress").val().trim() === '') {
+                isValid = false;
+                $('#errEmail').text('Please enter a valid email address.');
+            }
+            if ($("#Phone").val().trim() === '') {
+                isValid = false;
+                $('#errPhone').text('Please enter a valid phone number.');
+            }
+            if ($("#Lenders").val().trim() === '') {
+                isValid = false;
+                $('#errLenders').text('Please enter a valid entry for lenders.');
+            }
+            if ($("#AmountOwed").val().trim() === '') {
+                isValid = false;
+                $('#AmountOwed').text('Please enter a valid entry for amount owed.');
+            }
+            return isValid;
+        };
+
+        const subscribe = function () {
+            if (!validate()) {
+
+                return false;
+            }
+
+            const bday = new Date($('#Birthday').val());
+            const formatBday = (new Date(bday.getTime() - (bday.getTimezoneOffset() * 60 * 1000))).toISOString().split('T')[0];
+
+            const customer = {
+                first_name: $("#FirstName").val(),
+                last_name: $("#LastName").val(),
+                email: $("#SubEmailAddress").val(),
+                cf_birthday: formatBday,
+                phone: $("#Phone").val(),
+                cf_lenders: $("#Lenders").val(),
+                cf_amount_owed: $("#AmountOwed").val(),
+            };
+
+            const cbInstance = Chargebee.getInstance();
+            const cart = cbInstance.getCart();
+            var product = cbInstance.initializeProduct('SDCMonthly-USD-Monthly', 1);
+            cart.replaceProduct(product);
+            cart.setCustomer(customer);
+
+            return false;
+        };
+
+        $('#checkoutLink').on('mouseenter', subscribe);
+    });
+
+</script>

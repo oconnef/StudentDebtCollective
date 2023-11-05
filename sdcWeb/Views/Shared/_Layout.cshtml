@@ -1,0 +1,200 @@
+﻿@{
+    string metaKeywords = "student loan forgiveness, student loans, student loan forgiveness debt relief, debt relief student loan forgiveness, loan forgiveness federal student loans, average student loan debt, supreme court student loan debt relief, student loan debt forgiveness";
+    if (ViewData["Keywords"] != null && ViewData["Keywords"].ToString() != "")
+    {
+        metaKeywords = ViewData["Keywords"].ToString();
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Join Student Debt Collective and contribute to the movement for student loan forgiveness, for us, by us. Subscribe now!" />
+    <meta name="keywords" content="@metaKeywords" />
+    
+    <title>Student Debt Collective - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D167D2R92T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D167D2R92T');
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '880097970438293');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=880097970438293&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" runat="server" href="~/Home/Index">Student Debt Collective</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    @{
+                        bool isSubPage = false;
+                        string target = Url.Action("About", "Home") + "";
+                        //if (ViewData["Title"]?.ToString() == "Home Page")
+                        //{
+                        //    target = "#about";
+                        //}
+                        if (ViewData["Title"]?.ToString() == "Subscription")
+                        {
+                            isSubPage = true;
+                        }
+                    }
+                    <li class="nav-item"><a class="nav-link" href="@target">About Us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Blog")">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Subscription", "Home")">Subscribe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <img class="d-block mx-auto mb-4" src="~/images/hero-image.png" alt="" style="max-width:100%; max-height:500px;">
+                </div>
+                <div class="col-md-10 mx-auto col-lg-5">
+                    <h2 style="vertical-align:top;">Drowning in Student Loan Debt? <br />Join the Movement for Freedom!</h2>
+                    <br /><br />
+                    <p class="lead mb-4">Join for Just $5 a Month and Get a Shot at Debt Relief!</p>
+                    @if (!isSubPage)
+                    {
+                        <partial name="_emailSignupShortForm.cshtml" />
+                    }
+                    <br /><br />
+                    <h3>Next Drawing in <span style="font-weight:bolder;" id="demo"></span>!</h3>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a runat="server" href="@Url.Action("Privacy", "Home")">Privacy Policy</a></li>
+                        <li><a runat="server" href="@Url.Action("Terms", "Home")">Terms and Conditions</a></li>
+                        <li><a runat="server" href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Connect with Us</h4>
+                    <p style="width:60%;">Stay informed and motivated on your journey to debt relief.</p>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-4">
+                            <a href="https://www.facebook.com/studentdebtcollective" target="_blank">
+                                <i class="bi-facebook fs-3"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item me-4">
+                            <a href="https://twitter.com/StudDebtColl" target="_blank"><i class="bi-twitter fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.instagram.com/studentdebtcollective/" target="_blank"><i class="bi-instagram fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="@Url.Action("Contact","Home")"><i class="bi-envelope-fill fs-3"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Subscribe</h4>
+                    <p>Take Control of Your Student Loan Debt Today! <br />Subscribe to our Newsletter.</p>
+                    <partial name="_emailSignupShortForm.cshtml" />
+                </div>
+            </div>
+            <div class="row">
+                © StudentDebtCollective.com. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("December 1, 2023 12:00").getTime();
+
+        const updateCounter = function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                countDownDate = new Date(countDownDate);
+                //clearInterval(x);
+                countDownDate.setDate(countDownDate.getDate() + 7);
+            }
+        }
+        
+        // Update the count down every 1 second
+        var x = setInterval(updateCounter, 1000);
+
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
