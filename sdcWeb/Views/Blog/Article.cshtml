@@ -1,7 +1,0 @@
-﻿@model Article
-@{
-    ViewData["Title"] = "Newsletter #" + Model.Id + ": " + Model.Title;
-    ViewData["Keywords"] = string.Join(", ", Model.MetaTags);
-}
-<p>@Html.Raw(@Model.Content)</p>
-<p>Published on @Model.PublicationDate.ToShortDateString() by @Model.Author</p>
