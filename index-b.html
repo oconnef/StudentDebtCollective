@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="A mutual aid pool for student debt. One member gets their loans paid off every month. Free to join. Real money. Real people."/>
+  <title>Student Debt Collective — One of us gets free every month.</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-217164909-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-217164909-1');
+    window.addEventListener('load', function() {
+      gtag('event', 'ab_variant', { variant: 'b' });
+    });
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="sdc-nav">
+    <a class="brand" href="index.html">Student Debt Collective</a>
+    <div class="nav-links">
+      <a href="faq.html" class="hide-mobile">How it works</a>
+      <a href="recipients.html" class="hide-mobile">Who we've helped</a>
+      <a href="faq.html" class="hide-mobile">FAQ</a>
+      <a href="#signup" class="btn-nav">Join free</a>
+    </div>
+  </nav>
+
+  <!-- HERO — Variant B -->
+  <section class="sdc-hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <div class="sdc-badge">A mutual aid pool — not a political campaign</div>
+          <h1>One of us gets free<br>every month.</h1>
+          <p class="lead">Join a pool of debtors helping debtors. We crowdfund, draw a name, and wipe out someone's student loans in full — no waiting for Washington, no lobbying, just neighbors taking care of each other.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#signup" class="btn-primary-sdc">Join the pool — it's free</a>
+            <a href="#donate" class="btn-secondary-sdc">Donate to the next payoff</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="sdc-stats">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center gap-5 text-center">
+        <div>
+          <div class="stat-label">Members in pool</div>
+          <div class="stat-val" id="js-members">23</div>
+        </div>
+        <div class="stat-divider d-none d-md-block"></div>
+        <div>
+          <div class="stat-label">Next drawing at</div>
+          <div class="stat-val">50</div>
+        </div>
+        <div class="stat-divider d-none d-md-block"></div>
+        <div>
+          <div class="stat-label">Debt erased so far</div>
+          <div class="stat-val">$0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sdc-progress-wrap">
+    <div class="container">
+      <div class="sdc-progress-bar-outer">
+        <div class="sdc-progress-bar-inner" id="js-progress"></div>
+      </div>
+      <p class="sdc-progress-label"><span id="js-pct">46</span>% of the way to our first payoff drawing</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="sdc-how">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2>How it works</h2>
+        <p class="section-sub">Three steps. One winner a month. No fine print.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4 sdc-step">
+          <div class="sdc-step-num">1</div>
+          <h4>Join the pool</h4>
+          <p>Free signup. Your name goes into every drawing until you win. Have debt or just want to help — everyone's welcome.</p>
+        </div>
+        <div class="col-md-4 sdc-step">
+          <div class="sdc-step-num">2</div>
+          <h4>We crowdfund together</h4>
+          <p>Members and allies chip in what they can — $5, $50, whatever works. 100% goes directly to a loan servicer, not to us.</p>
+        </div>
+        <div class="col-md-4 sdc-step">
+          <div class="sdc-step-num">3</div>
+          <h4>Someone gets free</h4>
+          <p>We draw a name, verify their debt, and wire the funds straight to their lender. Then we do it again next month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="container pb-5">
+    <div class="sdc-quote">
+      <blockquote>"I never thought a bunch of strangers would do this for me. Now I'm one of those strangers for the next person."</blockquote>
+      <cite>— what the next winner will say (placeholder — replace with a real quote)</cite>
+    </div>
+  </div>
+
+  <div id="donate"></div>
+
+  <!-- SIGNUP SECTION -->
+  <section class="sdc-signup" id="signup">
+    <div class="container">
+      <h2>Could be you next.</h2>
+      <p class="sub">Free to join. We only email when a drawing happens.</p>
+
+      <div class="sdc-form-row">
+        <input type="email" id="js-email" placeholder="your@email.com" autocomplete="email"/>
+        <button onclick="handleSignup()">Join free</button>
+      </div>
+
+      <a href="contact.html" class="sdc-donate-link">Want to donate instead? <strong>Send us a note →</strong></a>
+
+      <div class="mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,0.1); max-width:600px; margin:0 auto;">
+        <p style="color:rgba(255,255,255,0.35); font-size:0.8rem;">
+          Or fill out our full signup form below — it collects the info we need for drawing eligibility.
+        </p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSelesh_c5aqNlVv7CMnxNd8inYVdATaaXwgeIbEbpiSt0Et4Q/viewform?embedded=true"
+          width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
+          style="border-radius:8px; margin-top:8px;">Loading…</iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sdc-footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
+          <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-2">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a href="recipients.html">Who we've helped</a>
+            <a href="contact.html">Contact</a>
+            <a href="TandC.html">Terms</a>
+            <a href="privacypolicy.html">Privacy</a>
+          </div>
+          <p class="copy mb-0">&copy; StudentDebtCollective.com. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 text-center text-lg-end">
+          <a href="https://www.facebook.com/Fckstudentloanscom-109881688240282" target="_blank" class="social-icon"><i class="bi-facebook"></i></a>
+          <a href="https://www.tiktok.com/@student.debt.coll" target="_blank" class="social-icon"><i class="bi-tiktok"></i></a>
+          <a href="https://www.instagram.com/studentdebtcollective/" target="_blank" class="social-icon"><i class="bi-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var MEMBER_COUNT = 23;
+    var DRAWING_AT   = 50;
+    document.getElementById('js-members').textContent = MEMBER_COUNT;
+    var pct = Math.round((MEMBER_COUNT / DRAWING_AT) * 100);
+    document.getElementById('js-pct').textContent = pct;
+    document.getElementById('js-progress').style.width = pct + '%';
+
+    function handleSignup() {
+      var email = document.getElementById('js-email').value.trim();
+      if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+      gtag('event', 'signup_intent', { email_provided: true, variant: 'b' });
+      document.getElementById('signup').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+  <script>var _ctct_m = "e35d3a3bcc4a2d551683b223c7f0c29c";</script>
+  <script id="signupScript" src="https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+</body>
+</html>
