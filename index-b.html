@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="A mutual aid pool for student debt. One member gets their loans paid off every month. Free to join. Real money. Real people."/>
+  <meta name="description" content="A mutual aid community for student debt. One member's loans get paid off every week via GoFundMe. Free to join. Real money. Real people."/>
   <title>Student Debt Collective — One of us gets free every month.</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -40,7 +40,7 @@
         <div class="col-lg-7">
           <div class="sdc-badge">A mutual aid pool — not a political campaign</div>
           <h1>One of us gets free<br>every month.</h1>
-          <p class="lead">Join a pool of debtors helping debtors. We crowdfund, draw a name, and wipe out someone's student loans in full — no waiting for Washington, no lobbying, just neighbors taking care of each other.</p>
+          <p class="lead">Join a community of debtors helping debtors. We draw a name, open a GoFundMe, blast it to everyone, and pay off their loans — no waiting for Washington, no money in our hands, just neighbors taking care of each other.</p>
           <div class="d-flex flex-wrap gap-3">
             <a href="#signup" class="btn-primary-sdc">Join the pool — it's free</a>
             <a href="#donate" class="btn-secondary-sdc">Donate to the next payoff</a>
@@ -55,13 +55,13 @@
     <div class="container">
       <div class="d-flex flex-wrap justify-content-center gap-5 text-center">
         <div>
-          <div class="stat-label">Members in pool</div>
+          <div class="stat-label">Members signed up</div>
           <div class="stat-val" id="js-members">23</div>
         </div>
         <div class="stat-divider d-none d-md-block"></div>
         <div>
           <div class="stat-label">Next drawing at</div>
-          <div class="stat-val">50</div>
+          <div class="stat-val">100</div>
         </div>
         <div class="stat-divider d-none d-md-block"></div>
         <div>
@@ -76,7 +76,7 @@
       <div class="sdc-progress-bar-outer">
         <div class="sdc-progress-bar-inner" id="js-progress"></div>
       </div>
-      <p class="sdc-progress-label"><span id="js-pct">46</span>% of the way to our first payoff drawing</p>
+      <p class="sdc-progress-label"><span id="js-pct">23</span>% of the way to our first drawing (23 of 100 members)</p>
     </div>
   </div>
 
@@ -95,13 +95,13 @@
         </div>
         <div class="col-md-4 sdc-step">
           <div class="sdc-step-num">2</div>
-          <h4>We crowdfund together</h4>
-          <p>Members and allies chip in what they can — $5, $50, whatever works. 100% goes directly to a loan servicer, not to us.</p>
+          <h4>GoFundMe goes live</h4>
+          <p>We set up a GoFundMe for the winner and blast it to every member and follower. You donate what you can — $5, $50, whatever. GoFundMe pays the lender directly at the end of the week.</p>
         </div>
         <div class="col-md-4 sdc-step">
           <div class="sdc-step-num">3</div>
-          <h4>Someone gets free</h4>
-          <p>We draw a name, verify their debt, and wire the funds straight to their lender. Then we do it again next month.</p>
+          <h4>Someone gets free — then we repeat</h4>
+          <p>When the drive closes, GoFundMe sends the funds straight to their loan servicer. We never touch the money. Then we draw the next name.</p>
         </div>
       </div>
     </div>
@@ -169,7 +169,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     var MEMBER_COUNT = 23;
-    var DRAWING_AT   = 50;
+    var DRAWING_AT   = 100;
     document.getElementById('js-members').textContent = MEMBER_COUNT;
     var pct = Math.round((MEMBER_COUNT / DRAWING_AT) * 100);
     document.getElementById('js-pct').textContent = pct;

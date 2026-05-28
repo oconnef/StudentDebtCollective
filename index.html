@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="A mutual aid pool for student debt. We crowdfund and pay off one member's loans every month. Free to join. No waiting on Congress."/>
+  <meta name="description" content="A mutual aid community for student debt. We draw a name, set up a GoFundMe, and pay off one member's loans every week. Free to join. No waiting on Congress."/>
   <title>Student Debt Collective — Congress isn't coming. Your neighbors are.</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -72,7 +72,7 @@
         <div class="col-lg-7">
           <div class="sdc-badge">A mutual aid pool — not a political campaign</div>
           <h1>Congress isn't coming.<br>Your neighbors are.</h1>
-          <p class="lead">Every month, we pool what we can and pay off one member's student loans in full. No lobbying. No waiting. Just debtors helping debtors — right now.</p>
+          <p class="lead">Every week, we draw a name, open a GoFundMe for that person, blast it to our community, and pay their loans. No lobbying. No waiting. No money sitting in our hands. Just debtors helping debtors — right now.</p>
           <div class="d-flex flex-wrap gap-3">
             <a href="#signup" class="btn-primary-sdc">Join the pool — it's free</a>
             <a href="#donate" class="btn-secondary-sdc">Donate to the next payoff</a>
@@ -87,13 +87,13 @@
     <div class="container">
       <div class="d-flex flex-wrap justify-content-center gap-5 text-center">
         <div>
-          <div class="stat-label">Members in pool</div>
+          <div class="stat-label">Members signed up</div>
           <div class="stat-val" id="js-members">23</div>
         </div>
         <div class="stat-divider d-none d-md-block"></div>
         <div>
           <div class="stat-label">Next drawing at</div>
-          <div class="stat-val">50</div>
+          <div class="stat-val">100</div>
         </div>
         <div class="stat-divider d-none d-md-block"></div>
         <div>
@@ -108,7 +108,7 @@
       <div class="sdc-progress-bar-outer">
         <div class="sdc-progress-bar-inner" id="js-progress"></div>
       </div>
-      <p class="sdc-progress-label"><span id="js-pct">46</span>% of the way to our first payoff drawing</p>
+      <p class="sdc-progress-label"><span id="js-pct">23</span>% of the way to our first drawing (23 of 100 members)</p>
     </div>
   </div>
 
@@ -127,13 +127,13 @@
         </div>
         <div class="col-md-4 sdc-step">
           <div class="sdc-step-num">2</div>
-          <h4>We crowdfund together</h4>
-          <p>Members and allies chip in what they can — $5, $50, whatever works. 100% goes directly to a loan servicer, not to us.</p>
+          <h4>GoFundMe goes live</h4>
+          <p>We set up a GoFundMe for the winner and blast it to every member and follower. You donate what you can — $5, $50, whatever. GoFundMe pays the lender directly at the end of the week.</p>
         </div>
         <div class="col-md-4 sdc-step">
           <div class="sdc-step-num">3</div>
-          <h4>Someone gets free</h4>
-          <p>We draw a name, verify their debt, and wire the funds straight to their lender. Then we do it again next month.</p>
+          <h4>Someone gets free — then we repeat</h4>
+          <p>When the drive closes, GoFundMe sends the funds straight to their loan servicer. We never touch the money. Then we draw the next name.</p>
         </div>
       </div>
     </div>
@@ -204,7 +204,7 @@
   <script>
     /* Live member counter + progress bar — update MEMBER_COUNT to your real number */
     var MEMBER_COUNT = 23;
-    var DRAWING_AT   = 50;
+    var DRAWING_AT   = 100;
     document.getElementById('js-members').textContent = MEMBER_COUNT;
     var pct = Math.round((MEMBER_COUNT / DRAWING_AT) * 100);
     document.getElementById('js-pct').textContent = pct;
