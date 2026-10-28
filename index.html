@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Student Debt Collective: every Monday, we pay off a stranger's student loan</title>
-<meta name="description" content="A free weekly drawing. One member is drawn live every Monday at 8pm ET, the community funds a GoFundMe, and GoFundMe pays their loan servicer directly. We never touch the money.">
+<meta name="description" content="A free weekly drawing. One member is drawn live every Monday at 8pm ET, the community funds a GoFundMe for them, and they pay their loan with it. Every payment receipt is posted. We never touch the money.">
 <meta property="og:title" content="Every Monday, we pay off a stranger's student loan.">
-<meta property="og:description" content="Free to enter. Drawn live. Paid straight to the servicer. Join the Student Debt Collective.">
+<meta property="og:description" content="Free to enter. Drawn live. Every payment receipt posted. Join the Student Debt Collective.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.studentdebtcollective.com/">
 <meta name="theme-color" content="#11302A">
@@ -191,7 +191,7 @@ section.sec.alt{background:var(--paper-2);border-top:1px solid var(--rule);borde
 
 /* money path */
 .money{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
-.path{display:grid;grid-template-columns:1fr 48px 1fr 48px 1fr;align-items:center}
+.path{display:grid;grid-template-columns:1fr;max-width:420px;width:100%;justify-self:center}
 .node{border:1px solid var(--rule);background:#fff;border-radius:10px;box-shadow:0 1px 2px rgba(20,43,36,.06);padding:16px 12px;text-align:center;font-weight:750;font-variation-settings:"wdth" 108;line-height:1.2;font-size:.98rem}
 .node span{display:block;font-weight:500;font-size:.8rem;color:var(--ink-soft);margin-top:4px;font-variation-settings:"wdth" 100}
 .node.end{background:var(--paid);color:#fff;border-color:var(--paid)}
@@ -201,7 +201,7 @@ section.sec.alt{background:var(--paper-2);border-top:1px solid var(--rule);borde
 .us{grid-column:1/-1;margin-top:26px;border:1.5px dashed #9DB3AA;border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-weight:650;font-size:.95rem;background:#fff}
 .us svg{flex:none}
 @media (max-width:900px){.money{grid-template-columns:1fr;gap:34px}}
-@media (max-width:520px){.path{grid-template-columns:1fr;gap:0}.arrow{width:2px;height:28px;margin:0 auto}.arrow::after{right:-5px;top:auto;bottom:-1px;border:6px solid transparent;border-top:9px solid var(--brand);border-bottom:0}}
+.path .arrow{width:2px;height:28px;margin:0 auto}.path .arrow::after{right:-5px;top:auto;bottom:-1px;border:6px solid transparent;border-top:9px solid var(--brand);border-bottom:0}
 
 /* signup */
 .join{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
@@ -284,7 +284,7 @@ footer .fine p{max-width:none}
   <div class="wrap">
     <div>
       <h1>Every Monday, we pay off a stranger's student loan.</h1>
-      <p class="lede">One member is drawn live at 8pm ET. Everyone chips in for a week. GoFundMe pays that person's loan servicer directly. Next time, the name could be yours.</p>
+      <p class="lede">One member is drawn live at 8pm ET. Everyone chips in for a week through GoFundMe. They pay their loan, and we post the receipt. Next time, the name could be yours.</p>
 
       <form class="quick" id="quickForm" novalidate>
         <label class="sr" for="qEmail">Email address</label>
@@ -344,8 +344,8 @@ footer .fine p{max-width:none}
     <ol class="steps">
       <li><h3>You enter</h3><p>Fill out the short form and follow us on Instagram or TikTok. That's your entry, and it carries over every week.</p></li>
       <li><h3>Monday, 8pm ET</h3><p>We draw one name on a livestream. The person drawn has 24 hours to verify their loan, or we draw again.</p></li>
-      <li><h3>A week of giving</h3><p>We set up a GoFundMe in their name and the whole community chips in for seven days. Every $5 you give earns you a bonus entry the next week.</p></li>
-      <li><h3>Paid to the servicer</h3><p>GoFundMe sends the money straight to their loan servicer. We post the receipt, and the next Monday we do it again.</p></li>
+      <li><h3>A week of giving</h3><p>We set up a GoFundMe with them as the beneficiary, and the whole community chips in for seven days. Give what you can, or just share it. Both help.</p></li>
+      <li><h3>Paid, with proof</h3><p>GoFundMe releases the money to them. They pay their servicer within 7 days and send us the confirmation. We post the receipt, and the next Monday we do it again.</p></li>
     </ol>
   </div>
 </section>
@@ -355,15 +355,15 @@ footer .fine p{max-width:none}
   <div class="wrap money">
     <div>
       <h2>We never touch a dollar.</h2>
-      <p class="lede" style="margin-top:16px">That isn't a slogan. We built the whole thing so we can't touch the money. There's no account for it to sit in and no fee to take out of it.</p>
-      <p>Donations go into a GoFundMe set up for that week's recipient. The payout goes to their loan servicer, not to us and not even to them. You can check every step.</p>
+      <p class="lede" style="margin-top:16px">That isn't a slogan. We built the whole thing so we can't touch the money. We have no account for it to sit in and take no fee from it.</p>
+      <p>Each week's GoFundMe names the person drawn as its beneficiary, so GoFundMe pays them directly. Never us. They pay their servicer, and we post the confirmation publicly. If the money isn't used to pay their loan, donors can ask GoFundMe for a refund under its Giving Guarantee.</p>
     </div>
-    <div class="path" role="img" aria-label="Money flows from donors to GoFundMe to the recipient's loan servicer. Student Debt Collective is not in the path.">
-      <div class="node">You donate<span>any amount</span></div>
+    <div class="path" role="img" aria-label="Money flows from donors to GoFundMe, to the person drawn, to their loan servicer, and the receipt is posted publicly. Student Debt Collective is not in the path.">
+      <div class="node">You donate<span>any amount, on GoFundMe</span></div>
       <div class="arrow"></div>
-      <div class="node">GoFundMe<span>one fund a week</span></div>
+      <div class="node">The person drawn<span>GoFundMe pays them directly</span></div>
       <div class="arrow"></div>
-      <div class="node end">Loan servicer<span>balance goes down</span></div>
+      <div class="node end">Their loan servicer<span>paid within 7 days, receipt posted</span></div>
       <div class="us">
         <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 4.5l13 13" stroke="currentColor" stroke-width="2"/></svg>
         Student Debt Collective sits outside this flow. Zero overhead. Zero cut.
@@ -465,10 +465,11 @@ footer .fine p{max-width:none}
   <div class="wrap">
     <div class="sec-head"><h2>Fair questions</h2></div>
     <div class="faq">
-      <details><summary>Is this a scam?</summary><p>Fair to ask. We never collect money, so there's nothing for us to run off with. Each week's funds go into a public GoFundMe, and GoFundMe pays the recipient's loan servicer directly. We post every payment receipt.</p></details>
-      <details><summary>Do I have to donate to be entered?</summary><p>No. Entering is free, and your entry carries over every week. Donating is optional. Every $5 you give earns one bonus entry in the following week's drawing.</p></details>
-      <details><summary>What happens if I'm drawn?</summary><p>We'll contact you right after the livestream. Within 24 hours, send a selfie holding your username and the date written on paper, plus a screenshot of your loan servicer dashboard. Once you're verified, your GoFundMe goes live. If we can't verify you in 24 hours, we draw again.</p></details>
-      <details><summary>Will it pay off my whole loan?</summary><p>It pays off whatever the community raises that week, and the full amount goes to your servicer. As the collective grows, each week's fund grows with it. That's why sharing matters.</p></details>
+      <details><summary>Is this a scam?</summary><p>Fair to ask. We never collect money, so there's nothing for us to run off with. Each week's funds go into a public GoFundMe that names the person drawn as beneficiary, so GoFundMe pays them, not us. We post every payment receipt.</p></details>
+      <details><summary>What stops the person drawn from keeping the money?</summary><p>Three things. Before their GoFundMe goes live, they agree in writing to pay their servicer within 7 days and send us the confirmation, which we post. The GoFundMe states that purpose, so if the money isn't used for it, donors can ask GoFundMe for a refund under its Giving Guarantee. And anyone who doesn't post proof is removed from all future drawings.</p></details>
+      <details><summary>Do I have to donate to be entered?</summary><p>No. Entering is free, and your entry carries over every week. Donating is optional and never changes your chances. Everyone has the same odds every week.</p></details>
+      <details><summary>What happens if I'm drawn?</summary><p>We'll contact you right after the livestream. Within 24 hours, send a selfie holding your username and the date written on paper, plus a screenshot of your loan servicer dashboard. Once you're verified and agree to pay your servicer within 7 days, your GoFundMe goes live with you as the beneficiary. If we can't verify you in 24 hours, we draw again.</p></details>
+      <details><summary>Will it pay off my whole loan?</summary><p>It pays whatever the community raises that week, minus any GoFundMe processing fees, and all of it goes to your loan. As the collective grows, each week's fund grows with it. That's why sharing matters.</p></details>
       <details><summary>Are you the Debt Collective?</summary><p>No. The Debt Collective is a debtors' union working on policy and organizing, and we support what they do. We're a separate, smaller project: direct mutual aid, one borrower at a time.</p></details>
     </div>
     <p style="margin-top:26px"><a href="faq.html" style="font-weight:700">Read the full FAQ</a></p>
